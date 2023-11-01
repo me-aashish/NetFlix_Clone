@@ -1,10 +1,10 @@
 import logo from './logo.svg';
-import './App.css';
+import Body from './Components/Body';
 
 function App() {
   return (
-    <div className="font-bold text-2xl">
-      Hello Netflix
+    <div className="">
+      <Body />
     </div>
   );
 }
