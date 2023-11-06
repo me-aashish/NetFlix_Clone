@@ -2,6 +2,8 @@ import React, { useRef } from 'react'
 import Header from './Header'
 import { useState } from 'react';
 import { validateCredentials } from '../utils/credentialsValidator';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebaseConfig";
 
 const Login = () => {
 
@@ -11,14 +13,37 @@ const Login = () => {
   const name = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSignIn = () => {
+  const handleSubmit = () => {
     const message = validateCredentials(
       email.current.value,
       password.current.value,
       name.current.value
     );
 
-    setErrorMessage(message);
+    if(message){
+      setErrorMessage(message);
+      return;
+    }
+
+    if (!isSign) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " " + errorMessage);
+          console.log(errorMessage);
+        });
+    }
+
   }
 
   const toogleSignInForm = () => {
@@ -65,7 +90,7 @@ const Login = () => {
         <p className="text-[#e50914] font-bold text-lg py-2">{errorMessage}</p>
         <button
           className="bg-[#e50914] p-2 my-4 w-full rounded-sm h-[44px] font-bold"
-          onClick={() => handleSignIn()}
+          onClick={() => handleSubmit()}
         >
           {isSign ? "Sign In" : "Sign Up"}
         </button>
