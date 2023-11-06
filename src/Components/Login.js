@@ -23,8 +23,16 @@ const Login = () => {
         className="absolute bg-black w-[30%] p-12 mt-[6rem] mb-[9rem] mx-auto right-0 left-0 text-white 
       rounded-sm bg-opacity-80"
       >
-        {isSign && <h1 className="font-bold text-xl py-4 ">Sign In </h1>}
-        {!isSign && <h1 className="font-bold text-xl py-4 ">Sign Up </h1>}
+        <h1 className="font-bold text-xl py-4 ">
+          {isSign ? "Sign In" : "Sign Up"}
+        </h1>
+        {!isSign && (
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="p-4 my-4 w-full bg-gray-700 rounded-sm"
+          />
+        )}
         <input
           type="text"
           placeholder="Email or phone number"
@@ -35,21 +43,19 @@ const Login = () => {
           placeholder="Password"
           className="p-4 my-4 w-full bg-gray-700 rounded-sm"
         />
-        {isSign && (
-          <button className="bg-red-900 p-4 my-6 w-full rounded-sm">
-            Sign In
-          </button>
-        )}
-        {!isSign && (
-          <button className="bg-red-900 p-4 my-6 w-full rounded-sm">
-            Sign Up
-          </button>
-        )}
-        {isSign && (
-          <p className="text-sm cursor-pointer" onClick={() => toogleSignInForm()}>
-            New to Netflix? Sign Up Now!
-          </p>
-        )}
+
+        <button className="bg-red-900 p-4 my-6 w-full rounded-sm">
+          {isSign ? "Sign In" : "Sign Up"}
+        </button>
+
+        <p
+          className="text-sm cursor-pointer"
+          onClick={() => toogleSignInForm()}
+        >
+          {isSign
+            ? "New to Netflix? Sign Up Now!"
+            : "Already a user? Sign In Now!"}
+        </p>
       </form>
     </div>
   );
