@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Header from './Header'
 import { useState } from 'react';
+import { validateCredentials } from '../utils/credentialsValidator';
 
 const Login = () => {
 
   const [isSign, setIsSignIn] = useState(true);
+  const email = useRef(null);
+  const password = useRef(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSignIn = () => {
+    console.log(validateCredentials(email.current.value, password.current.value));
+    const message = validateCredentials(
+      email.current.value,
+      password.current.value
+    );
+
+    setErrorMessage(message);
+  }
 
   const toogleSignInForm = () => {
     setIsSignIn(!isSign);
@@ -20,31 +34,39 @@ const Login = () => {
         />
       </div>
       <form
+        onSubmit={(e) => e.preventDefault()}
         className="absolute bg-black w-[30%] p-12 mt-[6rem] mb-[9rem] mx-auto right-0 left-0 text-white 
       rounded-sm bg-opacity-80"
       >
-        <h1 className="font-bold text-xl py-4 ">
+        <h1 className="font-bold text-2xl py-2 ">
           {isSign ? "Sign In" : "Sign Up"}
         </h1>
         {!isSign && (
           <input
             type="text"
             placeholder="Full Name"
-            className="p-4 my-4 w-full bg-gray-700 rounded-sm"
+            className="p-4 my-3 w-full bg-gray-700 rounded-sm h-[44px]"
           />
         )}
         <input
+          ref={email}
           type="text"
           placeholder="Email or phone number"
-          className="p-4 my-4 w-full bg-gray-700 rounded-sm"
+          className="p-4 my-3 w-full bg-gray-700 rounded-sm h-[44px]"
         />
         <input
+          ref={password}
           type="password"
           placeholder="Password"
-          className="p-4 my-4 w-full bg-gray-700 rounded-sm"
+          className="p-4 my-3 w-full bg-gray-700 rounded-sm h-[44px]"
         />
-
-        <button className="bg-red-900 p-4 my-6 w-full rounded-sm">
+        <p className="text-[#e50914] font-bold text-lg py-2">
+          {errorMessage}
+        </p>
+        <button
+          className="bg-[#e50914] p-2 my-4 w-full rounded-sm h-[44px] font-bold"
+          onClick={() => handleSignIn()}
+        >
           {isSign ? "Sign In" : "Sign Up"}
         </button>
 
