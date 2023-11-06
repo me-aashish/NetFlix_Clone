@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Header from './Header'
 import { useState } from 'react';
 import { validateCredentials } from '../utils/credentialsValidator';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
 
 const Login = () => {
@@ -17,7 +17,7 @@ const Login = () => {
     const message = validateCredentials(
       email.current.value,
       password.current.value,
-      name.current.value
+      name?.current?.value
     );
 
     if(message){
@@ -33,6 +33,24 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " " + errorMessage);
+          console.log(errorMessage);
+        });
+    }
+    else{
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
           const user = userCredential.user;
           console.log(user);
         })
