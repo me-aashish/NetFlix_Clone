@@ -8,13 +8,14 @@ const Login = () => {
   const [isSign, setIsSignIn] = useState(true);
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSignIn = () => {
-    console.log(validateCredentials(email.current.value, password.current.value));
     const message = validateCredentials(
       email.current.value,
-      password.current.value
+      password.current.value,
+      name.current.value
     );
 
     setErrorMessage(message);
@@ -43,6 +44,7 @@ const Login = () => {
         </h1>
         {!isSign && (
           <input
+            ref={name}
             type="text"
             placeholder="Full Name"
             className="p-4 my-3 w-full bg-gray-700 rounded-sm h-[44px]"
@@ -60,9 +62,7 @@ const Login = () => {
           placeholder="Password"
           className="p-4 my-3 w-full bg-gray-700 rounded-sm h-[44px]"
         />
-        <p className="text-[#e50914] font-bold text-lg py-2">
-          {errorMessage}
-        </p>
+        <p className="text-[#e50914] font-bold text-lg py-2">{errorMessage}</p>
         <button
           className="bg-[#e50914] p-2 my-4 w-full rounded-sm h-[44px] font-bold"
           onClick={() => handleSignIn()}
