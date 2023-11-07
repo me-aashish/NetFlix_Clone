@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { validateCredentials } from '../utils/credentialsValidator';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
+import { useNavigate } from 'react-router';
 
 const Login = () => {
 
@@ -12,6 +13,7 @@ const Login = () => {
   const password = useRef(null);
   const name = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     const message = validateCredentials(
@@ -35,6 +37,7 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -53,6 +56,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
