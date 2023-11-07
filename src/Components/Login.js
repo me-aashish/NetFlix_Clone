@@ -2,7 +2,11 @@ import React, { useRef } from 'react'
 import Header from './Header'
 import { useState } from 'react';
 import { validateCredentials } from '../utils/credentialsValidator';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
 import { useNavigate } from 'react-router';
 
@@ -16,6 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
+    setErrorMessage("");
     const message = validateCredentials(
       email.current.value,
       password.current.value,
@@ -36,13 +41,27 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/79035986?v=4",
+          })
+            .then(() => {
+              navigate("/browse");
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const generatedErrorMessage = error.message;
+              setErrorMessage(errorCode + " " + generatedErrorMessage);
+              
+            });
           console.log(user);
           navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + " " + errorMessage);
+          const generatedErrorMessage = error.message;
+          setErrorMessage(errorCode + " " + generatedErrorMessage);
+          
           console.log(errorMessage);
         });
     }
@@ -60,8 +79,9 @@ const Login = () => {
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + " " + errorMessage);
+          const generatedErrorMessage = error.message;
+          setErrorMessage(errorCode + " " + generatedErrorMessage);
+          
           console.log(errorMessage);
         });
     }
