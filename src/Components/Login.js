@@ -1,23 +1,20 @@
-import React, { useRef } from 'react'
-import Header from './Header'
-import { useState } from 'react';
-import { validateCredentials } from '../utils/credentialsValidator';
+import React, { useRef } from "react";
+import Header from "./Header";
+import { useState } from "react";
+import { validateCredentials } from "../utils/credentialsValidator";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
-import { useNavigate } from 'react-router';
 
 const Login = () => {
-
   const [isSign, setIsSignIn] = useState(true);
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = () => {
     setErrorMessage("");
@@ -27,7 +24,7 @@ const Login = () => {
       name?.current?.value
     );
 
-    if(message){
+    if (message) {
       setErrorMessage(message);
       return;
     }
@@ -45,27 +42,21 @@ const Login = () => {
             displayName: name.current.value,
             photoURL: "https://avatars.githubusercontent.com/u/79035986?v=4",
           })
-            .then(() => {
-              navigate("/browse");
-            })
+            .then(() => {})
             .catch((error) => {
               const errorCode = error.code;
               const generatedErrorMessage = error.message;
               setErrorMessage(errorCode + " " + generatedErrorMessage);
-              
             });
-          console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const generatedErrorMessage = error.message;
           setErrorMessage(errorCode + " " + generatedErrorMessage);
-          
+
           console.log(errorMessage);
         });
-    }
-    else{
+    } else {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
@@ -74,23 +65,18 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const generatedErrorMessage = error.message;
           setErrorMessage(errorCode + " " + generatedErrorMessage);
-          
-          console.log(errorMessage);
         });
     }
-
-  }
+  };
 
   const toogleSignInForm = () => {
     setIsSignIn(!isSign);
-  }
+  };
 
   return (
     <div>
@@ -148,6 +134,6 @@ const Login = () => {
       </form>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;
