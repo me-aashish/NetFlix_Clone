@@ -9,8 +9,9 @@ const MainVideoBG = ({ movieId }) => {
   const trailerVideoData = useSelector((store) => store.movies?.trailerVideo);
 
   return (
-    <div>
+    <div className="w-screen">
       <iframe
+      className="w-screen aspect-video"
         src={"https://www.youtube.com/embed/"+trailerVideoData?.key}
         title="YouTube video player"
         frameBorder="0"
