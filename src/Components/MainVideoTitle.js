@@ -7,10 +7,10 @@ const MainVideoTitle = ({ title, overview }) => {
       <h1 className="text-4xl font-bold ">{title}</h1>
       <p className="py-6 text-lg w-1/4 text-justify">{overview}</p>
       <div className="flex">
-        <button className="flex bg-gray-500  text-white p-4 text-lg px-12 bg-opacity-50 rounded-lg">
+        <button className="flex bg-gray-500  text-white h-[3.25rem] pt-[12px] text-lg px-10 bg-opacity-50 rounded-lg">
           ▶ Play
         </button>
-        <button className="flex bg-gray-500 w-18 text-white p-4 ml-5 px-12 bg-opacity-50 rounded-lg">
+        <button className="flex bg-gray-500 w-18 text-white h-[3.25rem] pt-[12px] ml-5 px-10 bg-opacity-50 rounded-lg">
           <img src={MORE_INFO_ICON} alt="more-info" className="w-7 h-7 mr-2" />
           More Info{" "}
         </button>
