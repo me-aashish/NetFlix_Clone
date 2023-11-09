@@ -9,12 +9,12 @@ const MainBrowserContainer = () => {
   
   if(!movies) return;
 
-  const { original_title, overview } = movies[0];
+  const { original_title, overview, id } = movies[0];
   const mainVideo = movies[0];
   return (
     <div>
         <MainVideoTitle title={original_title} overview={overview} />
-        <MainVideoBG />
+        <MainVideoBG movieId={id}/>
     </div>
   )
 }
