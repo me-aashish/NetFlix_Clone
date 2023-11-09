@@ -2,7 +2,7 @@ import React from 'react'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import Header from './Header'
 import MainBrowserContainer from './MainBrowserContainer';
-import SecondaryBrowserCOntainer from './SecondaryBrowserCOntainer';
+import SecondaryBrowserContainer from './SecondaryBrowserContainer';
 
 const Browse = () => {
 
@@ -12,7 +12,7 @@ const Browse = () => {
     <div>
       <Header />
       <MainBrowserContainer />
-      <SecondaryBrowserCOntainer />
+      <SecondaryBrowserContainer />
     </div>
   )
 }

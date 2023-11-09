@@ -1,9 +1,9 @@
 import React from 'react'
 
-const SecondaryBrowserCOntainer = () => {
+const SecondaryBrowserContainer = () => {
   return (
-    <div>SecondaryBrowserCOntainer</div>
+    <div>SecondaryBrowserContainer</div>
   )
 }
 
-export default SecondaryBrowserCOntainer
+export default SecondaryBrowserContainer

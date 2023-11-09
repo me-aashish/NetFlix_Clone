@@ -12,3 +12,6 @@ export const API_OPTIONS =  {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MjhkZTdjNGQzNzZkZDA2MjU5M2EzMGYxM2NlMGJjNSIsInN1YiI6IjY1NGJkYjM3ZDQ2NTM3MDBmZTMzZjc4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.srUgXDQpMvPnO4AwgFC-X02do76tvgoe996bJXiG7AI'
   }
 };
+
+export const MORE_INFO_ICON =
+  "https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_info_outline_48px-512.png";
