@@ -3,3 +3,12 @@ export const NETFLIX_LOGO =
 
 export const NETFLIX_BG =
   "https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/0efe6360-4f6d-4b10-beb6-81e0762cfe81/IN-en-20231030-popsignuptwoweeks-perspective_alpha_website_large.jpg";
+
+
+export const API_OPTIONS =  {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MjhkZTdjNGQzNzZkZDA2MjU5M2EzMGYxM2NlMGJjNSIsInN1YiI6IjY1NGJkYjM3ZDQ2NTM3MDBmZTMzZjc4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.srUgXDQpMvPnO4AwgFC-X02do76tvgoe996bJXiG7AI'
+  }
+};
