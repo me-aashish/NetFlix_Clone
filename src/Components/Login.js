@@ -83,10 +83,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          alt="bg"
-          src={NETFLIX_BG}
-        />
+        <img alt="bg" src={NETFLIX_BG} />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
@@ -118,7 +115,7 @@ const Login = () => {
         />
         <p className="text-[#e50914] font-bold text-lg py-2">{errorMessage}</p>
         <button
-          className="bg-[#e50914] p-2 my-4 w-full rounded-sm h-[44px] font-bold"
+          className="bg-[#e50914] p-2 my-4 w-full rounded-sm h-[44px] font-bold hover:bg-red-800"
           onClick={() => handleSubmit()}
         >
           {isSign ? "Sign In" : "Sign Up"}
