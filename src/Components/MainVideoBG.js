@@ -1,34 +1,12 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { API_OPTIONS } from '../utils/constants';
-import { addTrailerVideo } from '../utils/moviesSlice';
+import React from 'react'
+import { useSelector } from 'react-redux';
+import useMainBGVideo from '../hooks/useMainBGVideo';
+
 
 const MainVideoBG = ({ movieId }) => {
 
-  const dispatch = useDispatch();
+  useMainBGVideo(movieId);
   const trailerVideoData = useSelector((store) => store.movies?.trailerVideo);
-
-  const getMainMovieTrailer = async() => {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos`,
-      API_OPTIONS
-    );
-
-    const json = await data.json();
-    
-    const filterMovieClips = json.results.filter( clip => clip.type === "Trailer");
-    const movieTrailer = filterMovieClips.length
-      ? filterMovieClips[0]
-      : json.results[0];
-    
-    console.log(movieTrailer.key);
-
-    dispatch(addTrailerVideo(movieTrailer));
-  }
-
-  useEffect(() => {
-    getMainMovieTrailer();
-  }, [])
 
   return (
     <div>
