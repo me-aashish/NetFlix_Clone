@@ -15,3 +15,5 @@ export const API_OPTIONS =  {
 
 export const MORE_INFO_ICON =
   "https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_info_outline_48px-512.png";
+
+export const POSTER_CDN_LINK = "https://image.tmdb.org/t/p/w780/";

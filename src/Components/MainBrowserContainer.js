@@ -11,7 +11,7 @@ const MainBrowserContainer = () => {
   let min = 0;
   let max = 20;
   const movieNum = parseInt(Math.floor(Math.random() * (max - min + 1)) + min);
-  console.log(movieNum);
+  // console.log(movieNum);
   const { original_title, overview, id } = movies[0];
   const mainVideo = movies[0];
   return (
