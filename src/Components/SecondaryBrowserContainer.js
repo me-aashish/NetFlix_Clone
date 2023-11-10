@@ -8,6 +8,8 @@ const SecondaryBrowserContainer = () => {
     (store) => store.movies.nowPlayingMovies
   );
 
+  const topRatedMovies = useSelector((store) => store.movies.topRatedMovies);
+
   const popularMovies = useSelector((store) => store.movies.popularMovies);
 
   return (
@@ -18,8 +20,8 @@ const SecondaryBrowserContainer = () => {
           movies={nowPlayingMovies}
           className=""
         />
+        <MovieList title={"Top Rated"} movies={topRatedMovies} className="" />
         <MovieList title={"Popular"} movies={popularMovies} className="" />
-        <MovieList title={"Trending"} movies={nowPlayingMovies} className="" />
         <MovieList title={"Hot"} movies={nowPlayingMovies} className="" />
       </div>
     </div>
