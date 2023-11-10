@@ -9,11 +9,17 @@ const SecondaryBrowserContainer = () => {
   );
 
   return (
-    <div className="">
-      <MovieList title={"Now Playing"} movies={nowPlayingMovies} className="" />
-      <MovieList title={"Trending"} movies={nowPlayingMovies} className="" />
-      <MovieList title={"Popular"} movies={nowPlayingMovies} className="" />
-      <MovieList title={"Hot"} movies={nowPlayingMovies} className="" />
+    <div className=" bg-black">
+      <div className="-mt-80 relative z-30">
+        <MovieList
+          title={"Now Playing"}
+          movies={nowPlayingMovies}
+          className=""
+        />
+        <MovieList title={"Trending"} movies={nowPlayingMovies} className="" />
+        <MovieList title={"Popular"} movies={nowPlayingMovies} className="" />
+        <MovieList title={"Hot"} movies={nowPlayingMovies} className="" />
+      </div>
     </div>
   );
 }

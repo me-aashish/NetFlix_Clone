@@ -15,12 +15,12 @@ const MainVideoBG = ({ movieId }) => {
         src={
           "https://www.youtube.com/embed/" +
           trailerVideoData?.key +
-          "?autoplay=1&mute=1&loop=1playlist=" +
+          "?autoplay=1&mute=1&loop=1&playlist=" +
           trailerVideoData?.key
         }
         title="YouTube video player"
         frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="fullscreen"
       ></iframe>
     </div>
   );
