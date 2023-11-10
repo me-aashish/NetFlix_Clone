@@ -4,13 +4,13 @@ import MovieList from './MovieList'
 
 const SecondaryBrowserContainer = () => {
 
-  const nowPlayingMovies = useSelector(
-    (store) => store.movies.nowPlayingMovies
-  );
+  const nowPlayingMovies = useSelector((store) => store.movies.nowPlayingMovies);
 
   const topRatedMovies = useSelector((store) => store.movies.topRatedMovies);
 
   const popularMovies = useSelector((store) => store.movies.popularMovies);
+
+  const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
 
   return (
     <div className=" bg-black">
@@ -22,7 +22,7 @@ const SecondaryBrowserContainer = () => {
         />
         <MovieList title={"Top Rated"} movies={topRatedMovies} className="" />
         <MovieList title={"Popular"} movies={popularMovies} className="" />
-        <MovieList title={"Hot"} movies={nowPlayingMovies} className="" />
+        <MovieList title={"Upcoming"} movies={upcomingMovies} className="" />
       </div>
     </div>
   );
