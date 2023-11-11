@@ -23,9 +23,14 @@ const Browse = () => {
   return (
     <div>
       <Header />
-      {isSearchContainerVisible && <Search />}
-      <MainBrowserContainer />
-      <SecondaryBrowserContainer />
+      {isSearchContainerVisible ? (
+        <Search />
+      ) : (
+        <>
+          <MainBrowserContainer />
+          <SecondaryBrowserContainer />
+        </>
+      )}
     </div>
   );
 }
