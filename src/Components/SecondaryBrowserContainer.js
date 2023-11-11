@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { SCROLL_BTN_LINK } from '../utils/constants';
 import MovieList from './MovieList'
 
 const SecondaryBrowserContainer = () => {
@@ -18,8 +19,9 @@ const SecondaryBrowserContainer = () => {
         <MovieList
           title={"Now Playing"}
           movies={nowPlayingMovies}
-          className=""
+          className="flex"
         />
+        
         <MovieList title={"Top Rated"} movies={topRatedMovies} className="" />
         <MovieList title={"Popular"} movies={popularMovies} className="" />
         <MovieList title={"Upcoming"} movies={upcomingMovies} className="" />
