@@ -15,6 +15,7 @@ const Browse = () => {
     (store) => store.search.isSearchContainerVisible
   );
 
+
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();

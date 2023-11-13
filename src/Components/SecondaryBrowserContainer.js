@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { SCROLL_BTN_LINK } from '../utils/constants';
+import languages from '../utils/languageConstants';
 import MovieList from './MovieList'
 
 const SecondaryBrowserContainer = () => {
@@ -13,18 +14,32 @@ const SecondaryBrowserContainer = () => {
 
   const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
 
+  const currentLanguage = useSelector((store) => store.config.language);
+
   return (
     <div className=" bg-black">
       <div className="-mt-80 relative z-30">
         <MovieList
-          title={"Now Playing"}
+          title={languages[currentLanguage].NowPlaying}
           movies={nowPlayingMovies}
           className="flex"
         />
-        
-        <MovieList title={"Top Rated"} movies={topRatedMovies} className="" />
-        <MovieList title={"Popular"} movies={popularMovies} className="" />
-        <MovieList title={"Upcoming"} movies={upcomingMovies} className="" />
+
+        <MovieList
+          title={languages[currentLanguage].TopRated}
+          movies={topRatedMovies}
+          className=""
+        />
+        <MovieList
+          title={languages[currentLanguage].Popular}
+          movies={popularMovies}
+          className=""
+        />
+        <MovieList
+          title={languages[currentLanguage].Upcoming}
+          movies={upcomingMovies}
+          className=""
+        />
       </div>
     </div>
   );

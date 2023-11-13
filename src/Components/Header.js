@@ -6,6 +6,9 @@ import { auth } from '../utils/firebaseConfig';
 import { addUser, removeUser } from '../utils/userSlice'
 import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
 import { toogleSearchContainer } from '../utils/searchSlice';
+import { changeLanguage } from '../utils/congifSlice';
+import languages from '../utils/languageConstants';
+
 
 const Header = () => {
 
@@ -13,6 +16,7 @@ const Header = () => {
   const isSearchContainerVisible = useSelector(
     (store) => store.search.isSearchContainerVisible
   );
+  const currentLanguage = useSelector((store) => store.config.language);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -50,17 +54,29 @@ const Header = () => {
     dispatch(toogleSearchContainer());
   }
 
+  const handleLanguageOnchange = (e) => {
+    dispatch(changeLanguage(e.target.value))
+    // console.log(e.target.value);
+  }
+
   return (
     <div className="absolute w-screen px-4 bg-gradient-to-b from-black z-10 flex justify-between">
       <img className="w-44" src={NETFLIX_LOGO} alt="logo" />
 
       {user && (
-        <div className="w-[21rem] flex">
+        <div className="w-[24rem] flex">
           {
-            <div className="w-[85px] mr-[41px]">
-              <select className="m-4 p-2  bg-[#e50914] text-white font-semibold cursor-pointer rounded-lg">
+            <div className="w-[111px] mr-[17px]">
+              <select
+                className="m-4 p-2  bg-[#e50914] text-white font-semibold cursor-pointer rounded-lg"
+                onChange={(e) => handleLanguageOnchange(e)}
+              >
                 {SUPPORTED_LANGUAGES.map((language) => (
-                  <option value={language.identifier} key={language.identifier} className="bg-gray-700">
+                  <option
+                    value={language.identifier}
+                    key={language.identifier}
+                    className="bg-gray-700"
+                  >
                     {language.name}
                   </option>
                 ))}
@@ -69,18 +85,20 @@ const Header = () => {
           }
           <div className="">
             <button
-              className="bg-[#e50914] m-4 p-2 rounded-lg text-white font-semibold hover:bg-red-800 w-[85px] ml-[1px]"
+              className="bg-[#e50914] m-4 p-2 rounded-lg text-white font-semibold hover:bg-red-800 w-[111px] ml-[1px]"
               onClick={handleSearchContainerVisibilty}
             >
-              {!isSearchContainerVisible ? "Search" : "❌ Close"}
+              {!isSearchContainerVisible
+                ? languages[currentLanguage].search
+                : "❌ " + languages[currentLanguage].close}
             </button>
           </div>
           <div>
             <button
-              className="bg-[#e50914] m-4 p-2 rounded-lg text-white font-semibold hover:bg-red-800 w-[85px] ml-[1px]"
+              className="bg-[#e50914] m-4 p-2 rounded-lg text-white font-semibold hover:bg-red-800 w-[111px] ml-[1px]"
               onClick={handleLogOut}
             >
-              Log Out
+              {languages[currentLanguage].logOut}
             </button>
           </div>
         </div>
