@@ -20,3 +20,10 @@ export const POSTER_CDN_LINK = "https://image.tmdb.org/t/p/w780/";
 
 export const SCROLL_BTN_LINK =
   "https://e7.pngegg.com/pngimages/214/358/png-clipart-arrow-scrolling-encapsulated-postscript-arrow-angle-rectangle-thumbnail.png";
+
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hin", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];

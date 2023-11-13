@@ -9,7 +9,7 @@ const SearchBar = () => {
           placeholder="What's Your Movie Mood Today ?"
           className="m-4 p-4 rounded-lg col-span-9 bg-gray-700 text-white"
         ></input>
-        <button className="bg-[#e50914] m-4 p-4 rounded-lg text-white font-semibold col-span-3">
+        <button className="bg-[#e50914] m-4 p-4 rounded-lg text-white font-semibold col-span-3 hover:bg-red-800">
           Search
         </button>
       </form>

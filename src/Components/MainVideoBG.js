@@ -15,7 +15,7 @@ const MainVideoBG = ({ movieId }) => {
         src={
           "https://www.youtube.com/embed/" +
           trailerVideoData?.key +
-          "?autoplay=1&mute=1&loop=1&playlist=" +
+          "?autoplay=1&mute=1&loop=1&showinfo=0&playlist=" +
           trailerVideoData?.key
         }
         title="YouTube video player"

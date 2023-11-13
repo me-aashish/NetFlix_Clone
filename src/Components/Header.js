@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { auth } from '../utils/firebaseConfig';
 import { addUser, removeUser } from '../utils/userSlice'
-import { NETFLIX_LOGO } from '../utils/constants';
+import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
 import { toogleSearchContainer } from '../utils/searchSlice';
 
 const Header = () => {
@@ -55,10 +55,21 @@ const Header = () => {
       <img className="w-44" src={NETFLIX_LOGO} alt="logo" />
 
       {user && (
-        <div className="w-56 flex">
+        <div className="w-[21rem] flex">
+          {
+            <div className="w-[85px] mr-[41px]">
+              <select className="m-4 p-2  bg-[#e50914] text-white font-semibold cursor-pointer rounded-lg">
+                {SUPPORTED_LANGUAGES.map((language) => (
+                  <option value={language.identifier} key={language.identifier} className="bg-gray-700">
+                    {language.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          }
           <div className="">
             <button
-              className="bg-[#e50914] m-4 p-2 rounded-lg text-white font-semibold hover:bg-red-800 w-[85px]"
+              className="bg-[#e50914] m-4 p-2 rounded-lg text-white font-semibold hover:bg-red-800 w-[85px] ml-[1px]"
               onClick={handleSearchContainerVisibilty}
             >
               {!isSearchContainerVisible ? "Search" : "❌ Close"}
