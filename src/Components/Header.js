@@ -69,7 +69,7 @@ const Header = () => {
           {
             <div className="w-[111px] mr-[17px]">
               <select
-                className="m-4 p-2  bg-[#e50914] text-white font-semibold cursor-pointer rounded-lg"
+                className="m-4 p-2  bg-[#e50914] text-white font-semibold cursor-pointer rounded-lg hover:bg-red-800"
                 onChange={(e) => handleLanguageOnchange(e)}
               >
                 {SUPPORTED_LANGUAGES.map((language) => (
