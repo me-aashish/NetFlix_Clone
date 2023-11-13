@@ -55,7 +55,8 @@ const Header = () => {
   }
 
   const handleLanguageOnchange = (e) => {
-    dispatch(changeLanguage(e.target.value))
+    dispatch(changeLanguage(e.target.value));
+    
     // console.log(e.target.value);
   }
 
