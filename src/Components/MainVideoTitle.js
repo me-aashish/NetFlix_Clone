@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { MORE_INFO_ICON } from '../utils/constants'
 import languages from '../utils/languageConstants';
 import translate from "translate";
@@ -8,7 +8,6 @@ translate.engine = "google";
 const MainVideoTitle = ({ title, overview }) => {
 
   const currentLanguage = useSelector((store) => store.config.language);
-  const dispatch = useDispatch();
   const [translatedTitle, setTranslatedTitle] = useState(title);
   const [translatedOverview, setTranslatedOverview] = useState(overview);
 
@@ -22,11 +21,16 @@ const MainVideoTitle = ({ title, overview }) => {
       setTranslatedOverview(await translate(overview, currentLanguage));
     }
     else if (currentLanguage === "en") {
-       return;
+      setTranslatedTitle(await translate(title, { to: "en" }));
+      setTranslatedOverview(await translate(overview, { to: "en" }));
     }
   }
+
+  useEffect(() => {
+    tran(currentLanguage);
+  }, [currentLanguage])
   
-  tran(currentLanguage);
+  
 
   return (
     <div className="w-screen aspect-video pt-36 px-12 absolute text-white bg-gradient-to-r from-black">
