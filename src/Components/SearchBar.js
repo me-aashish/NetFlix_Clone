@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { API_OPTIONS, POSTER_CDN_LINK } from '../utils/constants';
 import languages from '../utils/languageConstants';
-import { addSearchSuggestedMovies } from '../utils/moviesSlice';
+import { addSearchSuggestedMovies, addSearchText } from '../utils/moviesSlice';
 import openai from '../utils/openAI';
 import MovieList from './MovieList';
 
@@ -36,6 +36,11 @@ const SearchBar = () => {
       });
       console.log(searchResults.choices?.[0]?.message?.content);
 
+      if(!searchResults.choices){
+        alert("No movies found");
+        return;
+      }
+
       const moviesToBeSearchedInTMDB =
         searchResults.choices?.[0]?.message?.content.split(", ");
 
@@ -45,6 +50,7 @@ const SearchBar = () => {
 
       const actualMovieArray = await Promise.all(TMDBpromiseMovieArray);
       dispatch(addSearchSuggestedMovies(actualMovieArray));
+      dispatch(addSearchText({searchText: searchText.current.value}));
       // console.log(actualMovieArray);
       
     } catch (error) {
