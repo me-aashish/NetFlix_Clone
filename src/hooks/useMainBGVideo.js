@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { API_OPTIONS } from '../utils/constants';
 import { addTrailerVideo } from '../utils/moviesSlice';
 
 const useMainBGVideo = (movieId) => {
   const dispatch = useDispatch();
+  const isBgVideoPresent = useSelector((store) => store.movies.trailerVideo);
 
   const getMainMovieTrailer = async () => {
     const data = await fetch(
@@ -25,7 +26,7 @@ const useMainBGVideo = (movieId) => {
   };
 
   useEffect(() => {
-    getMainMovieTrailer();
+    if(!isBgVideoPresent) getMainMovieTrailer();
   }, []);
 }
 
