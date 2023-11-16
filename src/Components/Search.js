@@ -5,9 +5,12 @@ import SearchMovieSuggestions from './SearchMovieSuggestions'
 
 const Search = () => {
   return (
-    <div>
-      <div className="absolute -z-20">
-        <img alt="bg" src={NETFLIX_BG} />
+    <div className="">
+      <div className="absolute -z-20 ">
+        <img alt="bg" src={NETFLIX_BG} className="" />
+        <img alt="bg" src={NETFLIX_BG} className="" />
+        <img alt="bg" src={NETFLIX_BG} className="" />
+        {/* <img alt="bg" src={NETFLIX_BG} className="" /> */}
       </div>
       <SearchBar />
       <SearchMovieSuggestions />
