@@ -64,3 +64,4 @@
 - Infinite Scrolling on horizontal and vertical directions on main page
 - Will try to improve the CSS of movie suggestions page
 - Add button to scroll vertical movie cards
+- Hover on to movie cards to play their trailer
