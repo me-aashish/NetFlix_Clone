@@ -41,6 +41,7 @@
 - Multi-Lingual Feature in our App
 - Added Movie Search Feature
 - Added OpenAI API to show movie suggestions.
+- Movie Data Caching
 
 
 # Features
@@ -57,3 +58,9 @@
 - Netflix
     - Search Bar
     - Movie Suggestions
+
+
+# Features to implement
+- Infinite Scrolling on horizontal and vertical directions on main page
+- Will try to improve the CSS of movie suggestions page
+- Add button to scroll vertical movie cards
