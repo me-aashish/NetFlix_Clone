@@ -15,10 +15,12 @@ const SearchMovieSuggestions = () => {
   const { searchText} = movieSlice;
   console.log(searchText);
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-white pt-6 pl-12">
-        {"Showing Results For : " + searchText.searchText}
-      </h1>
+    <div className="no-scrollbar">
+      {searchText && (
+        <h1 className="text-2xl font-bold text-white pt-6 pl-12">
+          {"Showing Results For : " + searchText.searchText}
+        </h1>
+      )}
       <div>
         {suggestedMovies?.map((movie, idx) => (
           // <MovieList title={"Showing Results For : " + searchText.searchText} movies={movie} />
@@ -27,16 +29,18 @@ const SearchMovieSuggestions = () => {
               <div className="flex pt-4 pl-6">
                 <div className="flex flex-wrap ">
                   {movie[idx] &&
-                    movie.map((movie) => (
+                    movie.map((movie) =>
                       // <MovieCard movies={movie} key={movie.id} className="flex" />
-                      movie.poster_path  ? <div className="flex  w-64 ml-4 pt-4">
-                        <img
-                          alt="poster"
-                          src={POSTER_CDN_LINK + movie.poster_path}
-                          className="w-[267px] h-[235px]"
-                        />
-                      </div> : null
-                    ))}
+                      movie.poster_path ? (
+                        <div className="flex  w-64 ml-4 pt-4">
+                          <img
+                            alt="poster"
+                            src={POSTER_CDN_LINK + movie.poster_path}
+                            className="w-[267px] h-[235px]"
+                          />
+                        </div>
+                      ) : null
+                    )}
                 </div>
               </div>
             </div>

@@ -62,7 +62,7 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen px-4 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44" src={NETFLIX_LOGO} alt="logo" />
+      <img className="w-44 mx-auto md:mx-0" src={NETFLIX_LOGO} alt="logo" />
 
       {user && (
         <div className="w-[24rem] flex">
