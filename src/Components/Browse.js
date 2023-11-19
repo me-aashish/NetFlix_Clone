@@ -26,7 +26,7 @@ const Browse = () => {
       <Header />
       {isSearchContainerVisible ? (
         <Search />
-      ) : (
+      ) : ( 
         <>
           <MainBrowserContainer />
           <SecondaryBrowserContainer />
